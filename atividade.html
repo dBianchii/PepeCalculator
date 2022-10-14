@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<style>
+		.gradient-custom-2 {
+			/* fallback for old browsers */
+			background: #fccb90;
+
+			/* Chrome 10-25, Safari 5.1-6 */
+			background: -webkit-linear-gradient(to right, #ee7724, #d8363a, #dd3675, #b44593);
+
+			/* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+			background: linear-gradient(to right, #ee7724, #d8363a, #dd3675, #b44593);
+		}
+
+		.switch {
+			position: relative;
+			display: inline-block;
+			width: 60px;
+			height: 34px;
+		}
+
+		.switch input {
+			opacity: 0;
+			width: 0;
+			height: 0;
+		}
+
+		.slider {
+			position: absolute;
+			cursor: pointer;
+			top: 0;
+			left: 0;
+			right: 0;
+			bottom: 0;
+			background-color: #ccc;
+			-webkit-transition: .4s;
+			transition: .4s;
+		}
+
+		.slider:before {
+			position: absolute;
+			content: "";
+			height: 26px;
+			width: 26px;
+			left: 4px;
+			bottom: 4px;
+			background-color: white;
+			-webkit-transition: .4s;
+			transition: .4s;
+		}
+
+		input:checked+.slider {
+			background-color: #2196F3;
+		}
+
+		input:focus+.slider {
+			box-shadow: 0 0 1px #2196F3;
+		}
+
+		input:checked+.slider:before {
+			-webkit-transform: translateX(26px);
+			-ms-transform: translateX(26px);
+			transform: translateX(26px);
+		}
+
+		.slider.round {
+			border-radius: 34px;
+		}
+
+		.slider.round:before {
+			border-radius: 50%;
+		}
+
+	</style>
+
+
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
+		integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+</head>
+
+<body>
+	<section class="h-100 gradient-form" style="background-color: #eee;">
+		<div class="container py-5 h-100">
+			<div class="row d-flex justify-content-center align-items-center h-100">
+				<div class="col-xl-10">
+					<div class="card rounded-3 text-black">
+						<div class="row g-0">
+							<div class="col-lg-6">
+								<div class="card-body p-md-5 mx-md-4">
+									<div class="text-center">
+										<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTG3xOc72NsMz-nGDTZs0s5IxN9yH-wGZ6-PMGyEo_aSORfjmJ6YV5gloFz2YiBJXeHWnk&usqp=CAU"
+											style="width: 185px;" alt="logo" class="rounded">
+									</div>
+									<br />
+									<h4 class="mt-1 mb-3 pb-1">Pepe Calculadora!!</h4>
+
+									<h5>Pepe diz:</h5>
+									<p>Pls inserir valor 1:</p>
+
+									<div class="form-outline mb-4">
+										<input type="number" id="pepeNum1" class="form-control" />
+									</div>
+
+									<h5>Pepe tb diz:</h5>
+									<p>Plsss inserir valor 2:</p>
+
+									<div class="form-outline mb-4">
+										<input type="number" id="pepeNum2" class="form-control" />
+									</div>
+
+									<div class="text-center pt-1 pb-1">
+										<button class="btn btn-primary btn-block fa-lg gradient-custom-2 mb-3"
+											type="button" onclick="operacao('add')">+</button>
+										<button class="btn btn-primary btn-block fa-lg gradient-custom-2 mb-3"
+											type="button" onclick="operacao('subtract')">-</button>
+										<button class="btn btn-primary btn-block fa-lg gradient-custom-2 mb-3"
+											type="button" onclick="operacao('divide')">/</button>
+										<button class="btn btn-primary btn-block fa-lg gradient-custom-2 mb-3"
+											type="button" onclick="operacao('multiply')">*</button>
+									</div>
+									<div class="row" id="pepeGoFastDiv" style="display: none">
+										<div class="col-2">
+											<label class="switch">
+												<input type="checkbox" id="pepeGoFast">
+												<span class="slider round"></span>
+											</label>
+										</div>
+										<div class="col d-flexalign-items-center">
+											<p>Fazer Pepe pensar mais rápido!</p>
+										</div>
+									</div>
+
+
+
+								</div>
+							</div>
+							<div class="col-lg-6 d-flex align-items-center gradient-custom-2">
+
+								<div class="text-white px-3 py-4 p-md-5 mx-md-4 text-center col">
+									<div id="thinkingGif" style="display: none">
+										<img width="200px" height="200px"
+											src="https://media.tenor.com/Ov5VrA7saFgAAAAS/thinking-pepe.gif"
+											alt="pepeThinkingGif" id="pepeThinkingGif">
+										<h3>Pepe está pensando....</h3>
+									</div>
+									<div id="resultTextDisplay" style="display: none">
+										<img width="150px" height="150px"
+											src="https://play-lh.googleusercontent.com/ySci3Gt0i2ncSouMBnNzhtaSlc5I4LFe9AygyJ6rOS_UOX3klvO_K5oE2UrEujXU0Vw=w240-h480-rw"
+											alt="pepeHappy">
+										<p id="resultado" class=""></p>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<script>
+		// sleep time expects milliseconds
+		function sleep(time) {
+			return new Promise((resolve) => setTimeout(resolve, time));
+		}
+
+		let count = 0
+
+		function operacao(operacao) {
+			const number1 = document.getElementById("pepeNum1").valueAsNumber;
+			const number2 = document.getElementById("pepeNum2").valueAsNumber;
+
+			var result = 0;
+			switch (operacao) {
+				case "add":
+					result = number1 + number2
+					break;
+				case "subtract":
+					result = number1 - number2
+					break;
+				case "divide":
+					result = number1 / number2
+					break;
+				case "multiply":
+					result = number1 * number2
+					break;
+			}
+
+			document.getElementById("resultTextDisplay").style.display = "none";
+			document.getElementById("thinkingGif").style.display = "block";
+			const pepeGif = document.getElementById("pepeThinkingGif")
+
+
+			let pepeGoFast = document.getElementById("pepeGoFast").checked
+			console.log(pepeGoFast);
+
+			sleep(pepeGoFast ? 0 : 5000).then(() => {
+				pepeGif.src = "https://f8n-production.s3.us-east-2.amazonaws.com/collections/tqvguciya-einstein%20v3.gif"
+
+				sleep(pepeGoFast ? 0 : 3500).then(() => {
+					document.getElementById("resultTextDisplay").style.display = "block";
+					document.getElementById("thinkingGif").style.display = "none";
+					pepeGif.src = "https://media.tenor.com/Ov5VrA7saFgAAAAS/thinking-pepe.gif";
+					if (count > 0) {
+						document.getElementById("pepeGoFastDiv").style.display = "block";
+					}
+					count++;
+				});
+			});
+
+			document.getElementById("resultado").innerHTML = "Resultado: " + result;
+		}
+	</script>
+</body>
+
+</html>
