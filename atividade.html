@@ -196,9 +196,7 @@
 			document.getElementById("thinkingGif").style.display = "block";
 			const pepeGif = document.getElementById("pepeThinkingGif")
 
-
 			let pepeGoFast = document.getElementById("pepeGoFast").checked
-			console.log(pepeGoFast);
 
 			sleep(pepeGoFast ? 0 : 5000).then(() => {
 				pepeGif.src = "https://f8n-production.s3.us-east-2.amazonaws.com/collections/tqvguciya-einstein%20v3.gif"
@@ -210,11 +208,12 @@
 					if (count > 0) {
 						document.getElementById("pepeGoFastDiv").style.display = "block";
 					}
+					document.getElementById("resultado").innerHTML = "Resultado: " + result;
+
 					count++;
 				});
 			});
 
-			document.getElementById("resultado").innerHTML = "Resultado: " + result;
 		}
 	</script>
 </body>
